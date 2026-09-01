@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaconCopyGame - Key System</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0d0f17; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(0, 255, 170, 0.3); border-radius: 16px; padding: 24px; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+        h2 { color: #00ffaa; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0,255,170,0.4); }
+        p { color: #aaa; font-size: 14px; margin-bottom: 20px; }
+        .btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 8px; font-weight: bold; color: #fff; text-decoration: none; cursor: pointer; transition: 0.3s; }
+        .btn-24h { background: linear-gradient(90deg, #ff8c00, #e52d27); }
+        .btn-16h { background: linear-gradient(90deg, #00c6ff, #0072ff); }
+        .btn-6h { background: linear-gradient(90deg, #11998e, #38ef7d); }
+        .key-box { margin-top: 20px; padding: 12px; background: rgba(0,0,0,0.4); border: 1px dashed #00ffaa; border-radius: 8px; word-break: break-all; }
+        .key-text { color: #00ffaa; font-family: monospace; font-size: 16px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🔑 GET KEY SCRIPT</h2>
+    <p>Chọn loại Key bạn muốn lấy để dùng Script Copy Game</p>
+
+    <!-- Thay LINK_WORKINK_CUA_BAN bằng link WorkInk bạn tạo trên dashboard WorkInk -->
+    <a href="https://work.ink/2V14/62db8afb-6893-49ae-8ea3-458de99913bf" class="btn btn-24h">🔥 Vượt Link Key 24 Giờ</a>
+    <a href="https://work.ink/2V14/ae804747-f143-473d-b2ba-5458b67e949b" class="btn btn-16h">⚡ Vượt Link Key 16 Giờ</a>
+    <a href="https://work.ink/2V14/7fe5ac06-fd2f-4c2e-a93d-ea8fb44b3d14" class="btn btn-6h">🌱 Vượt Link Key 6 Giờ</a>
+
+    <div id="resultBox" class="key-box" style="display: none;">
+        <span>Key của bạn:</span>
+        <div id="keyDisplay" class="key-text">---</div>
+    </div>
+</div>
+
+<script>
+    // Tự động sinh Key khi người dùng vượt xong WorkInk và được chuyển về web
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('type');
+
+    if (type) {
+        // Tạo Key động dạng: BACON-TYPE-NGAYTHANG
+        const dateStr = new Date().toISOString().slice(0,10).replace(/-/g,"");
+        const generatedKey = `BACON_${type.toUpperCase()}_${dateStr}_SECRET`;
+        
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('keyDisplay').innerText = generatedKey;
+    }
+</script>
+
+</body>
+</html>
